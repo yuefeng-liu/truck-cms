@@ -1,3 +1,4 @@
+/*
 package com.truck.cms.controller;
 
 import com.truck.cms.api.CouponDetailService;
@@ -8,9 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+*/
 /**
  * Created by Administrator on 2016-04-22.
- */
+ *//*
+
+
 @Api("优惠相关API")
 @RestController
 @RequestMapping(value = "api")
@@ -46,3 +50,4 @@ public class CouponController {
         return "success";
     }
 }
+*/

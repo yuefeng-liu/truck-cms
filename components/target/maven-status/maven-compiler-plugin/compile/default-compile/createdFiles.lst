@@ -1,0 +1,3 @@
+com\truck\cms\Application.class
+com\truck\cms\controller\CouponController.class
+com\truck\cms\component\CouponDetailComponent.class
