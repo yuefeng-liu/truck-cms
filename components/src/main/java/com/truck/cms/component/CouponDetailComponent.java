@@ -1,5 +1,6 @@
 package com.truck.cms.component;
 
+import com.github.pagehelper.PageHelper;
 import com.truck.base.entities.cms.CouponDetailMlh;
 import com.truck.base.entities.cms.CouponDetailMlhExample;
 import com.truck.base.repositories.cms.CouponDetailMlhMapper;
@@ -22,11 +23,15 @@ public class CouponDetailComponent implements CouponDetailService {
     private CouponDetailMlhMapper mlhMapper;
 
     @Override
-    public void initCouponDetail() {
+    public void getCouponDetail(int xValue,int pageNo,int pageSize) {
         logger.info("==================Init CouponDetail Success");
+        PageHelper.startPage(pageNo,pageSize);
         CouponDetailMlhExample example = new CouponDetailMlhExample();
-        example.createCriteria().andRuleIdEqualTo("229277");
+        example.createCriteria().andXValueEqualTo(xValue);
         List<CouponDetailMlh> list = mlhMapper.selectByExample(example);
-        logger.info("+++++++++++++++++"+list.size());
+        logger.info("+++++++++++++++++" + list.size());
+        for(CouponDetailMlh c:list){
+            logger.info("++++++++++"+c.getRuleId());
+        }
     }
 }
