@@ -12,6 +12,5 @@
     <!-- 声明需要暴露的服务接口 -->
     <dubbo:protocol name="dubbo" port="${dubbo.port}" />
     <!-- 和本地bean一样实现服务 -->
-    <dubbo:service interface="com.truck.cms.api.CouponDetailService" ref="couponService" />
-    <bean id="couponService" class="com.truck.cms.component.CouponDetailComponent"/>
+    <dubbo:annotation package="com.truck.cms.component"/>
 </beans>

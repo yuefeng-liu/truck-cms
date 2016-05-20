@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @SpringBootApplication
 @Import({MyBatisConfiguration.class})
-@EnableSwagger2
+//@EnableSwagger2
 //@Import({MyBatisConfiguration.class, SwaggerApiConfig.class})
 @ImportResource("classpath:/dubbo-provider.xml")
 public class Application {

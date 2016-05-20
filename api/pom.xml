@@ -12,4 +12,11 @@
     <artifactId>truck-cms-api</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.truck</groupId>
+            <artifactId>truck-utils-gateway</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 </project>

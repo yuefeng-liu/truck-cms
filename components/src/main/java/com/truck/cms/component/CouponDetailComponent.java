@@ -1,20 +1,17 @@
 package com.truck.cms.component;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 import com.truck.base.entities.cms.CouponDetailMlh;
 import com.truck.base.entities.cms.CouponDetailMlhExample;
 import com.truck.base.repositories.cms.CouponDetailMlhMapper;
 import com.truck.cms.api.CouponDetailService;
+import com.truck.utils.gateway.utils.annotation.ApiParameter;
+import com.truck.utils.gateway.utils.entity.ServiceException;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -31,15 +28,11 @@ public class CouponDetailComponent implements CouponDetailService {
     @Autowired
     private CouponDetailMlhMapper mlhMapper;
 
-    @ApiOperation(value = "获取详情", notes = "测试获取详情")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query", name = "xValue", dataType = "int", required = true,value = "查询值", defaultValue = "588"),
-            @ApiImplicitParam(paramType = "query", name = "pageNo", dataType = "int", required = true,value = "页码", defaultValue = "1"),
-            @ApiImplicitParam(paramType = "query", name = "pageSize", dataType = "int", required = true,value = "每页数量", defaultValue = "10")
-    })
-    @RequestMapping(value = "api/coupon", method = RequestMethod.GET)
+
     @Override
-    public void getCouponDetail(int xValue,int pageNo,int pageSize) {
+    public void getCouponDetail(@ApiParameter(required = true, name = "xValue", desc = "value值") int xValue,
+                                @ApiParameter(required = true, name = "pageNo", desc = "页码") int pageNo,
+                                @ApiParameter(required = true, name = "pageSize", desc = "页面大小") int pageSize) throws ServiceException {
         logger.info("==================Init CouponDetail Success");
         PageHelper.startPage(pageNo,pageSize);
         CouponDetailMlhExample example = new CouponDetailMlhExample();
@@ -50,4 +43,5 @@ public class CouponDetailComponent implements CouponDetailService {
             logger.info("++++++++++"+c.getRuleId());
         }
     }
+
 }
